@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33801.468
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionePratiche", "GestionePratiche\GestionePratiche.csproj", "{2AC14218-71F8-4AA5-A1F8-BA0B8253B37D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestionePratiche", "GestionePratiche\GestionePratiche.csproj", "{2AC14218-71F8-4AA5-A1F8-BA0B8253B37D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pratiche", "Pratiche", "{0BE9E820-1101-45A6-A980-9F281C740EC7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{932CB896-4342-4421-9855-DF4E20E69D07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionePratiche.Persistence", "GestionePratiche.Persistence\GestionePratiche.Persistence.csproj", "{A0C9FEF0-9C7C-4ED4-9F44-EB52AE129D01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestionePratiche.Persistence", "GestionePratiche.Persistence\GestionePratiche.Persistence.csproj", "{A0C9FEF0-9C7C-4ED4-9F44-EB52AE129D01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionePratiche.Dto", "GestionePratiche.Dto\GestionePratiche.Dto.csproj", "{DB64CCBE-E62C-4A91-B373-199C7E0D3467}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestionePratiche.Dto", "GestionePratiche.Dto\GestionePratiche.Dto.csproj", "{DB64CCBE-E62C-4A91-B373-199C7E0D3467}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionePratiche.Services", "GestionePratiche.Services\GestionePratiche.Services.csproj", "{224F4F6D-A272-4C99-8D22-91EED4612233}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestionePratiche.Services", "GestionePratiche.Services\GestionePratiche.Services.csproj", "{224F4F6D-A272-4C99-8D22-91EED4612233}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

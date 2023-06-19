@@ -1,28 +1,30 @@
 ﻿using AutoMapper;
 using FluentValidation;
 using GestionePratiche.Dto.Pratiche;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+using GestionePratiche.Persistence.Model;
+using GestionePratiche.Persistence.Repositories;
 
 namespace GestionePratiche.Services.Services;
-public class PraticaService
+public class PraticaService : IPraticaService
 {
     private readonly IMapper _mapper;
     private readonly IValidator<CreaPraticaRequest> _validator;
-    public PraticaService(IMapper mapper)
+    private readonly IRepository<Pratica> _praticaRepository;
+
+    public PraticaService(IMapper mapper, IValidator<CreaPraticaRequest> validator, IRepository<Pratica> praticaRepository)
     {
         _mapper = mapper;
+        _validator = validator;
+        _praticaRepository = praticaRepository;
     }
 
-    public Task<CreaPraticaResponse> CreatePratica(CreaPraticaRequest request)
+    public async Task<CreaPraticaResponse> CreatePratica(CreaPraticaRequest request, CancellationToken cancellationToken)
     {
-        _validator.ValidateAndThrowAsync(request);
+        await _validator.ValidateAndThrowAsync(request);
+        Pratica pratica = _mapper.Map<Pratica>(request);
 
+        var idPratica = await _praticaRepository.Create(pratica, cancellationToken);
 
-        return Task.FromResult(new CreaPraticaResponse());
+        return _mapper.Map<CreaPraticaResponse>(idPratica);
     }
 }

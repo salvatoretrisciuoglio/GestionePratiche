@@ -1,15 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
@@ -18,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GestionePratiche.Dto\GestionePratiche.Dto.csproj" />
+    <ProjectReference Include="..\GestionePratiche.Persistence\GestionePratiche.Persistence.csproj" />
   </ItemGroup>
 
 </Project>
