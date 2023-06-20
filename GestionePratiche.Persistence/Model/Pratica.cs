@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GestionePratiche.Persistence.Model;
+[Table("Pratica")]
 public class Pratica : IEntityBase
 {
     [Key]
@@ -18,5 +19,5 @@ public class Pratica : IEntityBase
     public DateTime DataDiNascita { get; set; }
 
     [NotMapped]
-    public IFormFile AllegatoPratica { get; set; }
+    public IFormFile? AllegatoPratica { get; set; }
 }

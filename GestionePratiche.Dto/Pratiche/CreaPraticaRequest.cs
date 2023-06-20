@@ -10,5 +10,5 @@ public class CreaPraticaRequest
 
     public DateTime DataDiNascita { get; set; }
 
-    public IFormFile AllegatoPratica { get; set; }
+    public IFormFile? AllegatoPratica { get; set; }
 }

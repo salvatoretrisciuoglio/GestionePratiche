@@ -14,11 +14,11 @@ public abstract class Repository<TEntity, TContext> : IRepository<TEntity>
         _dbContext = dbContext;
     }
 
-    public async Task<TEntity> Create(TEntity entity, CancellationToken cancellationToken)
+    public async Task<Guid> Create(TEntity entity, CancellationToken cancellationToken)
     {
         _dbContext.Set<TEntity>().Add(entity);
         await _dbContext.SaveChangesAsync(cancellationToken);
-        return entity;
+        return entity.Id;
     }
 
     public async Task<TEntity> Update(TEntity entity, CancellationToken cancellationToken)

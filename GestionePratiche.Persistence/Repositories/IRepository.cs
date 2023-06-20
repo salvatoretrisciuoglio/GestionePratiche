@@ -6,7 +6,7 @@ public interface IRepository<TEntity>
 {
     Task<TEntity> GetById(Guid entityId, CancellationToken cancellationToken);
 
-    Task<TEntity> Create(TEntity entity, CancellationToken cancellationToken);
+    Task<Guid> Create(TEntity entity, CancellationToken cancellationToken);
 
     Task<TEntity> Update(TEntity entity, CancellationToken cancellationToken);
 

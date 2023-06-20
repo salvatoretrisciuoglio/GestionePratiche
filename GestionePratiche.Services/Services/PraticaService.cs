@@ -23,8 +23,11 @@ public class PraticaService : IPraticaService
         await _validator.ValidateAndThrowAsync(request);
         Pratica pratica = _mapper.Map<Pratica>(request);
 
-        var idPratica = await _praticaRepository.Create(pratica, cancellationToken);
+        Guid idPratica = await _praticaRepository.Create(pratica, cancellationToken);
 
-        return _mapper.Map<CreaPraticaResponse>(idPratica);
+        return new CreaPraticaResponse()
+        {
+            IdPratica = idPratica,
+        };
     }
 }
