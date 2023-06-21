@@ -24,6 +24,7 @@ public class GestionePraticheServiceTests
         var praticaValidator = new CreaPraticaRequestValidator();
         _sut = new PraticaService(_mapper, praticaValidator, _praticaRepositoryMock.Object);
     }
+
     [Fact]
     public async Task CreatePratica__ShouldReturnGuid_WhenRequestIsCorrect()
     {
@@ -47,5 +48,36 @@ public class GestionePraticheServiceTests
 
         //Assert
         result.Should().BeEquivalentTo(expectedResult);
+        _praticaRepositoryMock.Verify(x => x.CreateAsync(It.IsAny<Pratica>(), CancellationToken.None), Times.Once);
+    }
+
+    [Fact]
+    public async Task CreatePratica__ShouldThrowValidationException_WhenFiscalCodeIsWrong()
+    {
+        //Arrange
+        CreaPraticaResponse expectedResult = new()
+        {
+            IdPratica = Guid.NewGuid()
+        };
+
+        _praticaRepositoryMock.Setup(x => x.CreateAsync(It.IsAny<Pratica>(), CancellationToken.None)).ReturnsAsync(expectedResult.IdPratica);
+        CreaPraticaRequest request = new()
+        {
+            Nome = "00",
+            Cognome = "00",
+            CodiceFiscale = "AAAAAAAAAAAAA",
+            DataDiNascita = new DateTime(2000, 1, 1),
+        };
+        //Act
+        Func<Task> func = async () =>
+        {
+            await _sut.CreatePraticaAsync(request, CancellationToken.None);
+        };
+
+        //Assert
+        var exc = await func.Should().ThrowAsync<FluentValidation.ValidationException>();
+        var errors = exc.Which.Errors;
+        errors.Count().Should().Be(1);
+        errors.Count(x => x.ErrorMessage == ValidationMessages.FiscalCodeNotValid).Should().Be(1);
     }
 }
