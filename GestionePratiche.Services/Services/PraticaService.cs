@@ -18,12 +18,12 @@ public class PraticaService : IPraticaService
         _praticaRepository = praticaRepository;
     }
 
-    public async Task<CreaPraticaResponse> CreatePratica(CreaPraticaRequest request, CancellationToken cancellationToken)
+    public async Task<CreaPraticaResponse> CreatePraticaAsync(CreaPraticaRequest request, CancellationToken cancellationToken)
     {
         await _validator.ValidateAndThrowAsync(request);
         Pratica pratica = _mapper.Map<Pratica>(request);
 
-        Guid idPratica = await _praticaRepository.Create(pratica, cancellationToken);
+        Guid idPratica = await _praticaRepository.CreateAsync(pratica, cancellationToken);
 
         return new CreaPraticaResponse()
         {

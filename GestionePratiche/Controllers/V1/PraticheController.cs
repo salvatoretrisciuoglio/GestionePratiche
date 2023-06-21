@@ -21,7 +21,7 @@ public class PraticheController : ControllerBase
     [HttpPost(Name = "creaPratica")]
     public async Task<ActionResult<CreaPraticaResponse>> CreaPratica([FromForm] CreaPraticaRequest request, CancellationToken cancellationToken)
     {
-        CreaPraticaResponse response = await _praticaService.CreatePratica(request, cancellationToken);
+        CreaPraticaResponse response = await _praticaService.CreatePraticaAsync(request, cancellationToken);
         return Ok(response);
     }
 }

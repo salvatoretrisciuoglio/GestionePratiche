@@ -3,5 +3,5 @@
 namespace GestionePratiche.Services.Services;
 public interface IPraticaService
 {
-    Task<CreaPraticaResponse> CreatePratica(CreaPraticaRequest request, CancellationToken cancellationToken);
+    Task<CreaPraticaResponse> CreatePraticaAsync(CreaPraticaRequest request, CancellationToken cancellationToken);
 }
