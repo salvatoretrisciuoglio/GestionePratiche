@@ -20,4 +20,9 @@ public class Pratica : IEntityBase
 
     [NotMapped]
     public IFormFile? AllegatoPratica { get; set; }
+
+    [Timestamp]
+    public byte[] Version { get; set; }
+
+
 }
